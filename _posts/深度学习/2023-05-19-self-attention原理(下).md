@@ -11,7 +11,7 @@ categories: [深度学习]
 <img src="/assets/imgs/ai/self-attention/self-attention原理.png" />
 
 1、首先，我们来看 `α11` 的计算过程。
-<img src="/assets/imgs/ai/self-attention/self-attention-2.png" width="300" />
+<img src="/assets/imgs/ai/self-attention/self-attention-2.png" width="300" style="display:block;"/>
 
 2、从上图可知，**α11 = q1 · k1**，点乘 `dot product` 可以写成 `k1 的逆` 与 `q1` 做矩阵相乘。
 
