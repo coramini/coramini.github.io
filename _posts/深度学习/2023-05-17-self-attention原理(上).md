@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "self-attention原理"
+title: "self-attention原理(上)"
 date: 2023-05-17
 author: Cola Liu
 categories: [深度学习]
@@ -99,6 +99,8 @@ categories: [深度学习]
 ## 小结
 
 可以看出，`self-attention`架构的设计，主要利用了向量（矩阵）的几何意义来保存相关的位置关系的。这是一个很好的解决问题的思路之一。
+
+<img src="/assets/imgs/ai/self-attention/self-attention原理.png" />
 
 `self-attention`与 传统的 `RNN` 相比，从串行计算变成并行计算，可以大大提升整个模型的运行效率。
 
