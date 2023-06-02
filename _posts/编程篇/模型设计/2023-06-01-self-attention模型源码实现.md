@@ -3,7 +3,7 @@ layout: post
 title: "self-attention模型源码实现"
 date: 2023-06-01
 author: Cola Liu
-categories: [编程篇,模型]
+categories: [编程篇,模型设计]
 ---
 
 
