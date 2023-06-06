@@ -1,0 +1,115 @@
+
+> 一听到接入`chatGPT`，脑中浮现的都是“高大上”、“麻烦”、“繁琐”、“困难”...等词。实际上只需要花**几分钟**就能写完整块代码！常见的`chatGPT`拓展/插件的难点在哪？难点不在于编程，而在于整个想法的设计与实现。本文简单介绍一下编程部分。
+
+以`GraphGPT`为例：
+
+## prompt
+
+首先，需要设计好`prompt`，`prompt`就是纯文本而已。来看看`GraghGPT`中核心的两个prompt ⬇️
+
+### stateless.prompt
+
+```
+Given a prompt, extrapolate as many relationships as possible from it and provide a list of updates.
+
+If an update is a relationship, provide [ENTITY 1, RELATIONSHIP, ENTITY 2]. The relationship is directed, so the order matters.
+
+If an update is related to a color, provide [ENTITY, COLOR]. Color is in hex format.
+
+If an update is related to deleting an entity, provide ["DELETE", ENTITY].
+
+Example:
+prompt: Alice is Bob's roommate. Make her node green.
+updates:
+[["Alice", "roommate", "Bob"], ["Alice", "#00FF00"]]
+
+prompt: $prompt
+updates:
+```
+ 从上面代码可以得出， `stateless.prompt`的作用是把输出格式化。通常输出为长文本，在这里需要把输出格式化为计算机理解的格式，通常就会有json、xml等等用于计算机通信的格式。
+同理，如果我们想要输出的信息更多，可以来看看stateful.prompt是怎么做的 ⬇️
+
+### stateful.prompt
+
+```
+Given the current state of a graph and a prompt, extrapolate as many relationships as possible from the prompt and update the state. Every node has an id, label, and color (in hex). Every edge has a to and from with node ids, and a label. Edges are directed, so the order of the from and to is important.
+
+Examples:
+current state:
+{ "nodes": [ { "id": 1, "label": "Bob", "color": "#ffffff" } ], "edges": [] }
+
+prompt: Alice is Bob's roommate. Make her node green.
+
+new state:
+{ "nodes": [ { "id": 1, "label": "Bob", "color": "#ffffff" }, { "id": 2, "label": "Alice", "color": "#ff7675" } ], "edges": [ { "from": 1, "to": 2, "label": "roommate" } ] }
+
+current state:
+$state
+
+prompt: $prompt
+
+new state: 
+```
+
+**看到上面两个prompt，让人不禁联想到计算机网络中通信协议的制定，编程简单，难的是通信协议的制定。这里prompt能够帮助我们format输入输出数据。**
+
+在上面例子中，`$prompt`会被替换成用户输入的文本。
+
+## ChatGPT接入
+> **就是一个简单的https接口，API key获取也超级简单**（前提是你要有一个gpt账号）
+### 获取 OpenAI API key
+如果你还没有api key，[点这里](https://platform.openai.com/account/api-keys)一键生成。
+
+### 接口及其参数
+- 接口：`https://api.openai.com/v1/completions`
+- method：`POST`
+- 参数：prompt等
+- header： 
+```
+{
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + String(apiKey)
+}
+```
+
+### fetch获取数据
+```js
+DEFAULT_PARAMS = {} # 程序默认参数
+apiKey = '' # 这里输入你的apiKey
+const params = { ...DEFAULT_PARAMS, prompt: prompt, stop: "\n" }; # prompt为上文prompt
+
+const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + String(apiKey)
+    },
+    body: JSON.stringify(params)
+};
+fetch('https://api.openai.com/v1/completions', requestOptions)
+.then(response => {
+    if (!response.ok) {
+    switch (response.status) {
+        case 401: // 401: Unauthorized: API key is wrong
+        throw new Error('Please double-check your API key.');
+        case 429: // 429: Too Many Requests: Need to pay
+        throw new Error('You exceeded your current quota, please check your plan and billing details.');
+        default:
+        throw new Error('Something went wrong with the request, please check the Network log');
+    }
+    }
+    return response.json();
+})
+.then((response) => {
+    const { choices } = response;
+    const text = choices[0].text;
+    console.log(text);
+
+    const updates = JSON.parse(text);
+    console.log(updates);
+})
+```
+## 小结
+GPT拓展编程部分都很简单，重点难点在于输入输出数据格式制定、prompt书写等。
+
+
