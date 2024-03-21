@@ -7,8 +7,6 @@ categories: [Diffusion]
 usemathjax: true
 ---
 
-# Diffusion Model 数学原理
-
 扩散模型`（Diffusion Model）`是一种用于生成高质量样本的生成式模型，它通过逐步迭代生成图像的方式来模拟真实数据的分布。这种模型最初由赫里亚尔·史塔布（Hjálmar Hafsteinsson）和塔奇科夫斯基（Taco Cohen）等人提出，并在深度学习领域得到了广泛关注和研究。
 
 基于扩散模型的架构有 `GLIDE`, `DALLE-2`, `Imagen` 和 完全开源的 `Stable Diffusion`。
@@ -74,7 +72,7 @@ $x_t$ 去除对应的噪声得到 $x_{t-1}$。
 
 <img src="/assets/imgs/ai/diffusion/diffusion008.jpeg" />
 
-此时，问题转换为如何求 $P(x_{t-1}|x_t)$,以及如何使得 MLE $log(P(x)$最大？
+此时，问题转换为如何求 $P(x_{t-1} \|x_t)$,以及如何使得 MLE $log(P(x))$最大？
 
 ### MLE —— log(P(x))
 
@@ -82,17 +80,18 @@ MLE是最大似然估计（Maximum Likelihood Estimation）的缩写，是统计
 
 具体来说，MLE假设我们有一组观察到的数据$ X = \{x_1, x_2, ..., x_n\} $，这些数据服从某种概率分布，而我们要估计这个概率分布的参数 $  \theta $。假设我们有一个概率密度函数$  f(x; \theta) $，表示数据$  x  $在给定参数$ \theta $ 下的概率密度。
 
-MLE的目标是找到一个参数 $  \hat{\theta} $，使得观察到的数据 $  X  $在该参数下的似然函数$  L(\theta | X)  $最大化。似然函数可以表示为：
+MLE的目标是找到一个参数 $  \hat{\theta} $，使得观察到的数据 $X$ 在该参数下的似然函数  $ L( \theta \| X ) $ 最大化。似然函数可以表示为：
 
-$$ L(\theta | X) = \prod_{i=1}^{n} f(x_i; \theta) $$
+$$ L(\theta \| X) = \prod_{i=1}^{n} f(x_i; \theta) $$
 
-对数似然函数通常更方便计算和优化，因此通常会对似然函数取对数，得到对数似然函数$  \ell(\theta | X) $：
+对数似然函数通常更方便计算和优化，因此通常会对似然函数取对数，得到对数似然函数$  \ell(\theta \| X) $：
 
-$$ \ell(\theta | X) = \sum_{i=1}^{n} \log f(x_i; \theta) $$
+$$ \ell(\theta \| X) = \sum_{i=1}^{n} \log f(x_i; \theta) $$
 
 最大似然估计的公式可以表示为：
+$$ \hat{\theta}_{MLE} = $$
 
-$$ \hat{\theta}_{MLE} = \arg \max_{\theta} \ell(\theta | X) $$
+$$ \arg \max_{\theta} \ell( \theta \| X)$$
 
 直接计算 `MLE`有点难度，可以把问题转换成求 `ELBO`。
 ### ELBO
@@ -100,17 +99,17 @@ $$ \hat{\theta}_{MLE} = \arg \max_{\theta} \ell(\theta | X) $$
 
 ELBO是Evidence Lower Bound（证据下界）的缩写，它是变分推断（Variational Inference）中的一个重要概念。在概率图模型和贝叶斯推断中，ELBO用于近似计算后验分布。
 
-我们用 ELBO 的方法来计算$$ log(P(x)) $$的下界的过程如下 ⬇️
+我们用 ELBO 的方法来计算 $ log(P(x)) $的下界的过程如下 ⬇️
 
 <img src="/assets/imgs/ai/diffusion/diffusion009.jpeg" />
 
-于是，我们得到了DDPM中$$ log(P(x)) $$的下界表达式如下 ⬇️
+于是，我们得到了DDPM中 $ log(P(x)) $的下界表达式如下 ⬇️
 
 
 
 <img src="/assets/imgs/ai/diffusion/diffusion010.jpeg" />
 
-问题就变成了求$ KL(q(x_{t-1}|x_t, x_0)||P(x_{t-1}|x_t))$最小，也即是 $P(x_{t-1}|x_t) $ 与 $ q(x_{t-1}|x_t, x_0)$ 两个分布最接近。
+问题就变成了求$ KL(q(x_{t-1} \|x_t, x_0) \|\|P(x_{t-1} \|x_t))$最小，也即是 $P(x_{t-1} \|x_t) $ 与 $ q(x_{t-1} \|x_t, x_0)$ 两个分布最接近。
 <img src="/assets/imgs/ai/diffusion/diffusion016.jpeg" />
 
 ### KL散度
@@ -118,41 +117,41 @@ KL散度用于衡量两个概率分布之间的差异。KL散度越小表示两�
 
 
 
-那么，如何求解 $ q(x_{t-1}|x_t, x_0) $ 呢？我们可以先从$ q(x_t|x_0)$、$ q(x_{t-1}|x_0) $ 和 $ q(x_t|x_{t-1})$入手。
+那么，如何求解 $ q(x_{t-1} \|x_t, x_0) $ 呢？我们可以先从$ q(x_t \|x_0)$、$ q(x_{t-1} \|x_0) $ 和 $ q(x_t \|x_{t-1})$入手。
 
 <img src="/assets/imgs/ai/diffusion/diffusion011.jpeg" />
 
 ### 高斯分布的条件概率
-在条件概率$ q(x_t|x_0) $中，表示在给定$ x_0 $的条件下，求$ x_t $的概率分布。由于这个条件概率是一个高斯分布，那么我们可以使用高斯分布的概率密度函数来计算。
+在条件概率$ q(x_t \|x_0) $中，表示在给定$ x_0 $的条件下，求$ x_t $的概率分布。由于这个条件概率是一个高斯分布，那么我们可以使用高斯分布的概率密度函数来计算。
 
 
-给定的$ x_0 $时$ x_t $的条件概率分布是高斯分布，即$ q(x_t|x_0) = \mathcal{N}(\mu_{x_t|x_0}$, $\sigma_{x_t|x_0}^2)$，其中$ \mu_{x_t|x_0} $是均值，$\sigma_{x_t|x_0}^2 $是方差。
+给定的$ x_0 $时$ x_t $的条件概率分布是高斯分布，即$ q(x_t \|x_0) = \mathcal{N} (\mu_{x_t \| x_0} ,\sigma_{x_t \|x_0}^2)$，其中$ \mu_{x_t \|x_0} $是均值，$\sigma_{x_t \|x_0}^2 $是方差。
 
 我们有：$ x_t = \sqrt{\bar\alpha_t}\ x_0 + \sqrt{1-\bar\alpha_t}\ \epsilon$, 其中$\epsilon $服从标准正态分布$ \mathcal{N}(0, I)$
 
-即$ q(x_t|x_0) $可以表示为$\mathcal{N}(x_t;\sqrt{\bar\alpha_t}\ x_0,(1-\bar\alpha_t)I)  $
+即$ q(x_t \|x_0) $可以表示为$\mathcal{N}(x_t;\sqrt{\bar\alpha_t}\ x_0,(1-\bar\alpha_t)I) $
 
 
 因此，在给定$ x_0 $的条件下，$x_t $的概率密度函数为：
 
-$$ q(x_t|x_0) = \frac{1}{\sqrt{2\pi\sigma_{x_t|x_0}^2}} \exp\left(-\frac{(x_t-\mu_{x_t|x_0})^2}{2\sigma_{x_t|x_0}^2}\right) $$
+$$ q(x_t \|x_0) = \frac{1}{\sqrt{2\pi\sigma_{x_t \|x_0}^2}} \exp\left(-\frac{(x_t-\mu_{x_t \|x_0})^2}{2\sigma_{x_t \|x_0}^2}\right) $$
 
-即$ q(x_t|x_0) \propto \exp\left(-\frac{(x_t-\sqrt{\bar\alpha_t}\ x_0)^2}{2(1-\bar\alpha_t)}\right) $
+即$ q(x_t \|x_0) \propto \exp\left(-\frac{(x_t-\sqrt{\bar\alpha_t}\ x_0)^2}{2(1-\bar\alpha_t)}\right) $
 
 
-已知$ x_t $与 $ x_0 $的关系式，由高斯分布的条件概率可以得到$q(x_t|x_0)$，同理可以得到$ q(x_{t-1}|x_0) $和$ q(x_t|x_{t-1}) $如下 ⬇️
+已知$ x_t $与 $ x_0 $的关系式，由高斯分布的条件概率可以得到$q(x_t \|x_0)$，同理可以得到$ q(x_{t-1} \|x_0) $和$ q(x_t \|x_{t-1}) $如下 ⬇️
 
 
 <img src="/assets/imgs/ai/diffusion/diffusion012.jpeg" />
 
-由贝叶斯公式，可以得到$ q(x_{t-1}|x_t,x_0) $的关系式如下 ⬇️
+由贝叶斯公式，可以得到$ q(x_{t-1} \|x_t,x_0) $的关系式如下 ⬇️
 
 <img src="/assets/imgs/ai/diffusion/diffusion013.jpeg" />
 
 
 <img src="/assets/imgs/ai/diffusion/diffusion014.jpeg" />
 
-经过进一步的计算，得到$ q(x_{t-1}|x_t,x_0)$的分布。把$x_{t-1} $的 均值`mean` 和 方差 `variance` 分别写出来可以得到：
+经过进一步的计算，得到$ q(x_{t-1} \|x_t,x_0)$的分布。把$x_{t-1} $的 均值`mean` 和 方差 `variance` 分别写出来可以得到：
 <img src="/assets/imgs/ai/diffusion/diffusion015.jpeg" />
 
 于是，`Denoise`过程中采样的算法如下 ⬇️
