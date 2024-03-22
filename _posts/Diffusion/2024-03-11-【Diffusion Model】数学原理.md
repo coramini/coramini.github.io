@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Diffusion Model数学原理"
+title: "【Diffusion Model】数学原理"
 date: 2024-03-11
 author: Cola Liu
 categories: [Diffusion]
