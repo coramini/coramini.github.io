@@ -2,8 +2,8 @@
 layout: post
 title: "LangChain快速开始"
 date: 2024-03-28
-author: Cola Liu
-categories: [编程篇]
+author: "Cola Liu"
+categories: [编程篇, LLM]
 usemathjax: true
 ---
 
@@ -21,6 +21,7 @@ pip install langchain-openai
 ## Quick Start
 使用`LangChain`构建一个简单的聊天应用程序，这里采用的是`Openai`的模型。
 
+<img src="/assets/imgs/ai/langchain/langchain-model-io.png" />
 
 ```python
 import os
