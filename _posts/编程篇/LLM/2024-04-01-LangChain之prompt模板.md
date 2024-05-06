@@ -205,4 +205,21 @@ prompt = load_prompt("simple_prompt.json")
 print(prompt.format(name="小红",what="搞笑的"))
 ```
 
+其中yaml文件内容示例如下 ⬇️
+```yaml   
+_type: prompt
+input_variables:
+    ["name","what"]
+template:
+    给我讲一个关于{name}的{what}故事
+```
+json文件内容示例如下 ⬇️
+```json
+{
+    "_type":"prompt",
+    "input_variables":["name","what"],
+    "template":"给我讲一个关于{name}的{what}故事"
+}
+```
+
 以上就是各种`prompt`模板的常见用法。除此之外，还有`OutputParser`等高阶处理方法。
