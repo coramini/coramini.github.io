@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LangChain之Chains的使用"
+title: "LangChain之路由链RouterChain"
 date: 2024-05-08
 author: "Cola Liu"
 categories: [编程篇, LLM]
