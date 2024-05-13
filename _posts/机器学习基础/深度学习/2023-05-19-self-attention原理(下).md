@@ -3,7 +3,7 @@ layout: post
 title: "self-attention原理(下)"
 date: 2023-05-19
 author: Cola Liu
-categories: [机器学习,深度学习]
+categories: [机器学习基础]
 ---
 
 从上一篇文章中，我们大概了解了 **self-attention** 模型的设计。在这里，我们从矩阵（线性代数）的角度，来看看具体的计算过程。
