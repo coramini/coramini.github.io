@@ -3,7 +3,7 @@ layout: post
 title: "【Stable Diffusion weui 源码】从ui开始"
 date: 2024-04-07
 author: "Cola Liu"
-categories: [Diffusion, stable diffusion weui]
+categories: [Diffusion]
 usemathjax: true
 ---
 `Stable Diffusion WebUI`（稳定扩散 WebUI）是一个基于 `Stable Diffusion` 的网络用户界面 `（Web User Interface）`。

@@ -3,7 +3,7 @@ layout: post
 title: "【Stable Diffusion】源码解析(一)"
 date: 2024-04-03
 author: "Cola Liu"
-categories: [Diffusion, Stable Diffusion weui]
+categories: [Diffusion]
 usemathjax: true
 ---
 
