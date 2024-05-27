@@ -24,9 +24,9 @@ categories: [编程篇,BaseLine,模型设计]
 
 <img src="/assets/imgs/ai/transformer/self-attention.png" />
 
-假设我们有一个输入矩阵：`embedded_input`。 形状为 `(seq_len x hidden_dim)`
+假设我们有一个输入矩阵：`embedded_input`。 形状为 `(seq_len X hidden_dim)`
 
-其中， `(seq_len x hidden_dim)`是什么意思呢？ 比如，我们有一个序列：`i saw a cat`，维度为 6。那我们可以表示为：
+其中， `(seq_len X hidden_dim)`是什么意思呢？ 比如，我们有一个序列：`i saw a cat`，维度为 6。那我们可以表示为：
 <img src="/assets/imgs/ai/transformer/input-shape.png" />
 
 这里的`seq_len`为4（4个单词，我们也可以用其他的划分方法），每一个单词用一个6维的向量表示，即`hidden_dim`为6。
@@ -296,5 +296,7 @@ scores = scores.masked_fill(attention_mask == 0, float("-inf"))
 `Transformer`模型由编码器`（Encoder）`和解码器`（Decoder）`组成。编码器负责将输入序列进行编码，解码器负责根据编码器的输出生成目标序列。编码器和解码器都由多层堆叠的自注意力层和前馈神经网络层组成。
 
 ## 参考资料
+https://medium.com/machine-intelligence-and-deep-learning-lab/transformer-the-self-attention-mechanism-d7d853c2c621
+
 https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61
 https://zhuanlan.zhihu.com/p/338817680
