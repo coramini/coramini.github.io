@@ -4,6 +4,7 @@ title: "PyTorch常见的神经网络层和 API"
 date: 2023-03-20
 author: Cola Liu
 categories: [编程篇, PyTorch]
+pin: true
 ---
 
 # PyTorch常见的神经网络层和 API
