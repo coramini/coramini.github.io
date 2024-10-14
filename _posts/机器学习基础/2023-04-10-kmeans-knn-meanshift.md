@@ -4,7 +4,6 @@ title: "kmeans、knn 和 meanshift"
 date: 2023-04-10
 author: Cola Liu
 categories: [机器学习基础]
-pin: true
 ---
 
 # 聚类算法介绍

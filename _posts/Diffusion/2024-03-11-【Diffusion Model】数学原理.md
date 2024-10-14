@@ -5,7 +5,6 @@ date: 2024-03-11
 author: Cola Liu
 categories: [Diffusion]
 usemathjax: true
-pin: true
 ---
 
 扩散模型`（Diffusion Model）`是一种用于生成高质量样本的生成式模型，它通过逐步迭代生成图像的方式来模拟真实数据的分布。这种模型最初由赫里亚尔·史塔布（Hjálmar Hafsteinsson）和塔奇科夫斯基（Taco Cohen）等人提出，并在深度学习领域得到了广泛关注和研究。
