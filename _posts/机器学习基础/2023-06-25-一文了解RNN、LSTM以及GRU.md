@@ -4,6 +4,7 @@ title: "一文了解 RNN、LSTM以及GRU"
 date: 2023-06-25
 author: Cola Liu
 categories: [机器学习基础]
+order: 2
 ---
 
 
