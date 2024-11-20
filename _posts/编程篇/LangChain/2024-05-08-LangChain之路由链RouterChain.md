@@ -5,7 +5,6 @@ date: 2024-05-08
 author: "Cola Liu"
 categories: [编程篇, LangChain]
 usemathjax: true
-pin: true
 ---
 
 <img src="/assets/imgs/ai/langchain/router-chain.png" />

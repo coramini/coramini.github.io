@@ -4,7 +4,6 @@ title: "Q-learning算法详解"
 date: 2024-07-10
 author: Cola Liu
 categories: [LLM, RL]
-pin: true
 ---
 
 ## RL基础概念
