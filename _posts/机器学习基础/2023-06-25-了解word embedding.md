@@ -2,7 +2,7 @@
 layout: post
 title: "了解 Word Embedding"
 date: 2023-06-25
-author: Cola Liu
+author: cora Liu
 categories: [机器学习基础]
 ---
 

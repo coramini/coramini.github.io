@@ -2,7 +2,7 @@
 layout: post
 title: "LangChain快速开始"
 date: 2024-03-28
-author: "Cola Liu"
+author: "cora Liu"
 categories: [编程篇, LangChain]
 usemathjax: true
 ---

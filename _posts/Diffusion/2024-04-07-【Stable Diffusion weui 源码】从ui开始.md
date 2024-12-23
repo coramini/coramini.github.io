@@ -2,7 +2,7 @@
 layout: post
 title: "【Stable Diffusion weui 源码】从ui开始"
 date: 2024-04-07
-author: "Cola Liu"
+author: "cora Liu"
 categories: [Diffusion]
 usemathjax: true
 ---

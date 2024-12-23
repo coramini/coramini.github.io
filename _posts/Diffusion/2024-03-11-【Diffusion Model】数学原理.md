@@ -2,7 +2,7 @@
 layout: post
 title: "【Diffusion Model】数学原理"
 date: 2024-03-11
-author: Cola Liu
+author: cora Liu
 categories: [Diffusion]
 usemathjax: true
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "transpose函数的用法"
 date: 2023-05-23
-author: Cola Liu
+author: cora Liu
 categories: [编程篇, PyTorch]
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "kmeans、knn 和 meanshift"
 date: 2023-04-10
-author: Cola Liu
+author: cora Liu
 categories: [机器学习基础]
 ---
 

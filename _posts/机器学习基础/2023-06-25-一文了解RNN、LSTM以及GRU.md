@@ -2,7 +2,7 @@
 layout: post
 title: "一文了解 RNN、LSTM以及GRU"
 date: 2023-06-25
-author: Cola Liu
+author: cora Liu
 categories: [机器学习基础]
 pin: true
 ---

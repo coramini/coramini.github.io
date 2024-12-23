@@ -2,7 +2,7 @@
 layout: post
 title: "LangChain文本检索增强—RAG"
 date: 2024-05-07
-author: "Cola Liu"
+author: "cora Liu"
 categories: [编程篇, LangChain]
 usemathjax: true
 ---

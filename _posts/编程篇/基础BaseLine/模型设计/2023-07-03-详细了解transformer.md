@@ -2,7 +2,7 @@
 layout: post
 title: "详细了解transformer"
 date: 2023-07-03
-author: Cola Liu
+author: cora Liu
 categories: [编程篇,BaseLine,模型设计]
 pin: true
 ---

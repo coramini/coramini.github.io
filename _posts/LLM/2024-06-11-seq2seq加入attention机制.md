@@ -2,7 +2,7 @@
 layout: post
 title: "seq2seq模型和attention机制"
 date: 2024-06-11
-author: Cola Liu
+author: cora Liu
 categories: [LLM]
 ---
 `Seq2Seq` 模型是一种用于处理序列数据的深度学习模型架构。

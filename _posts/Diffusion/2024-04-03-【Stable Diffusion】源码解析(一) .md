@@ -2,7 +2,7 @@
 layout: post
 title: "【Stable Diffusion】源码解析(一)"
 date: 2024-04-03
-author: "Cola Liu"
+author: "cora Liu"
 categories: [Diffusion]
 usemathjax: true
 ---
@@ -39,7 +39,7 @@ usemathjax: true
 
 接着就会得到一个输出的噪声$\epsilon_{\theta}$。计算$\epsilon_{\theta}$与$\epsilon_{random}$ 相关的loss函数，更新`Unet`。
 
-可参照[【Diffusion Model】数学原理](https://colamini.github.io/posts/Diffusion-Model-%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/)
+可参照[【Diffusion Model】数学原理](https://coramini.github.io/posts/Diffusion-Model-%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/)
 
 将该过程简化如下 ⬇️
 
@@ -89,7 +89,7 @@ usemathjax: true
 相关算法如下所示：
 <img src="/assets/imgs/ai/diffusion/diffusion017.jpeg" />
 
-具体可参考[【Diffusion Model】数学原理](https://colamini.github.io/posts/Diffusion-Model-%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/)
+具体可参考[【Diffusion Model】数学原理](https://coramini.github.io/posts/Diffusion-Model-%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/)
 
 ### Stable Diffusion模型采样
 （以`txt2img`为例）

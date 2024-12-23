@@ -2,7 +2,7 @@
 layout: post
 title: "LangChain之路由链RouterChain"
 date: 2024-05-08
-author: "Cola Liu"
+author: "cora Liu"
 categories: [编程篇, LangChain]
 usemathjax: true
 ---

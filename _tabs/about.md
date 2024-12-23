@@ -17,7 +17,7 @@ order: 4
 ## 全英Blog
 
 开始建设中...
-[cola-coding.github.io](https://cola-coding.github.io)
+[cora-coding.github.io](https://cora-coding.github.io)
 
 计划更新：
 - AI系列（100+，已有70+）
@@ -30,4 +30,4 @@ order: 4
 
 
 ## 交流一下
-wx：colacoding（备注来源：blog）
+wx：coracoding（备注来源：blog）

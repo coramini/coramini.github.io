@@ -2,7 +2,7 @@
 layout: post
 title: "LLM中的Tokenizer"
 date: 2024-05-27
-author: Cola Liu
+author: cora Liu
 categories: [LLM]
 ---
 

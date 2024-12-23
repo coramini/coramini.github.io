@@ -2,7 +2,7 @@
 layout: post
 title: "语言生成任务中Transformer的输出处理"
 date: 2023-06-01
-author: Cola Liu
+author: cora Liu
 categories: [编程篇,BaseLine,数据后处理]
 ---
 

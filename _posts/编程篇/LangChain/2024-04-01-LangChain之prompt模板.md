@@ -2,7 +2,7 @@
 layout: post
 title: "LangChain之prompt模板"
 date: 2024-04-01
-author: "Cola Liu"
+author: "cora Liu"
 categories: [编程篇, LangChain]
 usemathjax: true
 ---

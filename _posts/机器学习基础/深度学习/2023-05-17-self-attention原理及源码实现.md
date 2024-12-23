@@ -2,7 +2,7 @@
 layout: post
 title: "self-attention原理及源码实现"
 date: 2023-05-17
-author: Cola Liu
+author: cora Liu
 categories: [机器学习基础]
 pin: true
 ---
